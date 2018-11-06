@@ -1,3 +1,4 @@
+![enter image description here](https://github.com/durrrr91/dmarket/blob/master/src/assets/store/store.png?raw=true)
 **Ethereum based marketplace for media files**
 
 !! This project is **not** complete and was built for the London Blockchain Week Hackathon in 2017.
