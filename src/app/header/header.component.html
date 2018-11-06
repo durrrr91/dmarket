@@ -1,0 +1,25 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="smart">
+  <div class="container">
+
+    <div class="navbar-left mr-4">
+      <button class="navbar-toggler" type="button">&#9776;</button>
+      <a class="navbar-brand" href="#" [routerLink]="['/']">
+        <h4 class="text-white"><strong>DMarket</strong></h4><span class="text-lightest"></span>
+      </a>
+    </div>
+
+    <section class="navbar-mobile">
+      <nav class="nav nav-navbar mr-auto">
+        <a class="nav-link" routerLinkActive="active" href="#" [routerLink]="['/create-ico']">Create Token</a>
+        <a class="nav-link" routerLinkActive="active" href="#" [routerLink]="['/market-listings']">Market Listings</a>
+      </nav>
+
+      <div class="d-stick-block">
+        <div *ngIf="currentAccount">MetaMask account: <span class="text-warning">{{ currentAccount }}</span></div>
+        <div *ngIf="!currentAccount">MetaMask status: <span class="text-danger">Disconnected</span></div>
+      </div>
+    </section>
+
+  </div>
+</nav><!-- /.navbar -->

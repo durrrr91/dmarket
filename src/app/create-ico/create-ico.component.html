@@ -1,0 +1,69 @@
+<header class="header text-white" style="background-image: url(../assets/img/bg/1.jpg);" data-overlay="6">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <h1>ICO Lab</h1>
+        <p class="lead-2 opacity-90 mt-6">Use the form below to set the parameters of your token. The smart contracts will be updated and compiled in real time. You can deploy them from your browser if you have the MetaMask extension.</p>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <h6 class="divider">Token details</h6>
+        <div class="row gap-y">
+          <div class="col-md-6">  
+            <div class="form-group">
+              <label>Token name</label>
+              <input [(ngModel)]="contractsVars.token_name" class="form-control form-control-sm" type="text" placeholder="Token name">
+            </div>
+            <div class="form-group">
+              <label>Token symbol</label>
+              <input [(ngModel)]="contractsVars.token_symbol" class="form-control form-control-sm" type="text" placeholder="Token symbol">
+            </div>
+            <div class="form-group">
+              <label>Decimals</label>
+              <input class="form-control form-control-sm" type="text" placeholder="18">
+            </div>
+            <button (click)="setAllContracts();compileAllContracts();" type="button" class="btn btn-round btn-success">Recompile contracts</button>
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
+        <div class="row gap-y">
+          <div class="col-md-12">
+            <h6 class="divider">Account details</h6>
+
+            <div *ngIf="userState.account">Ethereum Account: <code>{{userState.account}}</code></div>
+            <div *ngIf="!userState.account">No Ethereum account connected. Please download the MetaMask plugin so you can deploy the smart contracts below from your browser.</div>
+
+            <div *ngFor="let contractState of contracts">
+
+              <div class="row gap-y">
+                <div class="col-md-12">
+                  <h6 class="divider">Smart Contracts</h6>
+                </div>
+                <div class="col-md-6">
+                    <div *ngIf="contractState.contractSource">Contract Source: 
+                    <pre class="contract-code-container">
+                      <code highlight [code]="contractState.contractSource"></code>
+                    </pre>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div *ngIf="contractState.contractBytecode">Contract Bytecode: <pre><code highlight [code]="contractState.contractBytecode"></code></pre></div>
+                    <div *ngIf="contractState.contractAbi">Contract ABI: <pre><code highlight [code]="contractState.contractAbi"></code></pre></div>
+                    <button (click)="contractDeploy(contractState)" type="button" class="btn btn-round btn-success">Deploy Contract</button>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

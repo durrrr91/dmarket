@@ -1,0 +1,18 @@
+<header class="header text-white" style="background-color: #24292e">
+    <canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+    <div class="container">
+        <div *ngFor="let item of storeAssets" class="row align-items-center h-100 mb-50">
+          <div class="col-md-4 item-box">
+            <img [src]="item.source">
+          </div>
+          <div class="col-md-8">
+            <div><strong>Created by:</strong> {{ item.owner }}</div>
+            <div><strong>Price:</strong> {{ item.price }} ETH</div>
+            <div><strong>Hash:</strong> {{ item.hash }}</div>
+            <!-- This works, needs proper add item form:  <a (click)="addItem(item)" class="btn btn-sm btn-buy" href="#">Add</a> -->
+            <a *ngIf="!item.ownedByAddress" (click)="buyItem(item)" class="btn btn-sm btn-light btn-buy" href="#">Buy</a>
+            <a *ngIf="item.ownedByAddress" class="btn btn-sm btn-success btn-buy" href="#">You own this item</a>
+          </div>
+        </div>
+    </div>
+  </header>
